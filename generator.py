@@ -71,7 +71,7 @@ for grade in range(grade_min, grade_max + 1):
             )
 
             print("\b", end="")
-    print()
+    print("[DONE]")
 
 # Output file
 if os.path.exists('output.apkg'):
