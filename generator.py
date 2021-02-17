@@ -11,8 +11,6 @@ install()
 
 from questions import *
 
-title = "Please choose (space) question types desired and confirm (enter):"
-
 # Parse CSV file and return a list of lists
 def parse_csv(text, sep=","):
     lines = list(map(lambda t: t.strip(), text.split("\n")))
@@ -20,7 +18,7 @@ def parse_csv(text, sep=","):
     ret = list(map(lambda l: l.split(sep), lines))
     return ret
 
-
+title = "Please choose (space) question types desired and confirm (enter):"
 def get_label(option): return option[0]
 selected = pick(questions, title, multiselect=True, min_selection_count=1, options_map_func=get_label)
 
