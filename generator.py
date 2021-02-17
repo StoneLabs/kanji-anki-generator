@@ -1,6 +1,7 @@
 import os
 import sys
 import itertools
+from random import shuffle
 
 import genanki
 from pick import pick
@@ -23,6 +24,8 @@ def parse_csv(text, sep=","):
 def get_label(option): return option[0]
 selected = pick(questions, title, multiselect=True, min_selection_count=1, options_map_func=get_label)
 
+# Ask for shuffle
+shuffle_deck = 1 == pick(['No', 'Yes'], 'Would you like the deck to be shuffled?')[1]
 
 
 print("Generating deck...\n")
@@ -72,6 +75,10 @@ for grade in range(grade_min, grade_max + 1):
 
             print("\b", end="")
     print("[DONE]")
+
+if shuffle_deck:
+    print("Shuffling deck...")
+    shuffle(deck.notes)
 
 # Output file
 if os.path.exists('output.apkg'):
